@@ -1,0 +1,87 @@
+var _user$project$Types$example = {contents: '', filename: 'nothing.mscx'};
+var _user$project$Types$Score = F2(
+	function (a, b) {
+		return {contents: a, filename: b};
+	});
+var _user$project$Types$Escala = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return {nombre: a, $do: b, dos: c, re: d, res: e, mi: f, fa: g, fas: h, sol: i, sols: j, la: k, las: l, si: m};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Types$Model = F5(
+	function (a, b, c, d, e) {
+		return {id: a, mScore: b, escala: c, escalaAnterior: d, bloqueado: e};
+	});
+var _user$project$Types$Si = {ctor: 'Si'};
+var _user$project$Types$Las = {ctor: 'Las'};
+var _user$project$Types$La = {ctor: 'La'};
+var _user$project$Types$Sols = {ctor: 'Sols'};
+var _user$project$Types$Sol = {ctor: 'Sol'};
+var _user$project$Types$Fas = {ctor: 'Fas'};
+var _user$project$Types$Fa = {ctor: 'Fa'};
+var _user$project$Types$Mi = {ctor: 'Mi'};
+var _user$project$Types$Res = {ctor: 'Res'};
+var _user$project$Types$Re = {ctor: 'Re'};
+var _user$project$Types$Dos = {ctor: 'Dos'};
+var _user$project$Types$Do = {ctor: 'Do'};
+var _user$project$Types$VolverAEscalaAnterior = {ctor: 'VolverAEscalaAnterior'};
+var _user$project$Types$CambiarNombreEscala = function (a) {
+	return {ctor: 'CambiarNombreEscala', _0: a};
+};
+var _user$project$Types$Preescalar = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return {ctor: 'Preescalar', _0: a, _1: b, _2: c, _3: d, _4: e, _5: f, _6: g, _7: h, _8: i, _9: j, _10: k, _11: l, _12: m};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Types$Introducir = F2(
+	function (a, b) {
+		return {ctor: 'Introducir', _0: a, _1: b};
+	});
+var _user$project$Types$ScoreRead = function (a) {
+	return {ctor: 'ScoreRead', _0: a};
+};
+var _user$project$Types$ScoreSelected = {ctor: 'ScoreSelected'};

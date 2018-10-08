@@ -1,0 +1,135 @@
+var _user$project$State$subscriptions = function (model) {
+	return _user$project$Ports$fileContentRead(_user$project$Types$ScoreRead);
+};
+var _user$project$State$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'ScoreSelected':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _user$project$Ports$fileSelected(model.id)
+				};
+			case 'ScoreRead':
+				var _p1 = _p0._0;
+				var newScore = {contents: _p1.contents, filename: _p1.filename};
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							mScore: _elm_lang$core$Maybe$Just(newScore)
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Preescalar':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{
+							escala: {nombre: _p0._0, $do: _p0._1, dos: _p0._2, re: _p0._3, res: _p0._4, mi: _p0._5, fa: _p0._6, fas: _p0._7, sol: _p0._8, sols: _p0._9, la: _p0._10, las: _p0._11, si: _p0._12},
+							bloqueado: true
+						}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Introducir':
+				var oldEscala = model.escala;
+				var n = A2(
+					_elm_lang$core$Result$withDefault,
+					0,
+					_elm_lang$core$String$toInt(_p0._1));
+				var newEscala = function () {
+					var _p2 = _p0._0;
+					switch (_p2.ctor) {
+						case 'Do':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{$do: n});
+						case 'Dos':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{dos: n});
+						case 'Re':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{re: n});
+						case 'Res':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{res: n});
+						case 'Mi':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{mi: n});
+						case 'Fa':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{fa: n});
+						case 'Fas':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{fas: n});
+						case 'Sol':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{sol: n});
+						case 'Sols':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{sols: n});
+						case 'La':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{la: n});
+						case 'Las':
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{las: n});
+						default:
+							return _elm_lang$core$Native_Utils.update(
+								oldEscala,
+								{si: n});
+					}
+				}();
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{escala: newEscala, escalaAnterior: newEscala}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'CambiarNombreEscala':
+				var oldEscala = model.escala;
+				var newEscala = _elm_lang$core$Native_Utils.update(
+					oldEscala,
+					{nombre: _p0._0});
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{escala: newEscala, escalaAnterior: newEscala}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{escala: model.escalaAnterior, bloqueado: false}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});
+var _user$project$State$init = {
+	ctor: '_Tuple2',
+	_0: {
+		id: 'ScoreInputId',
+		mScore: _elm_lang$core$Maybe$Just(_user$project$Types$example),
+		escala: {nombre: 'Cromática', $do: 0, dos: 1, re: 2, res: 3, mi: 4, fa: 5, fas: 6, sol: 7, sols: 8, la: 9, las: 10, si: 11},
+		escalaAnterior: {nombre: 'Cromática', $do: 0, dos: 1, re: 2, res: 3, mi: 4, fa: 5, fas: 6, sol: 7, sols: 8, la: 9, las: 10, si: 11},
+		bloqueado: false
+	},
+	_1: _elm_lang$core$Platform_Cmd$none
+};

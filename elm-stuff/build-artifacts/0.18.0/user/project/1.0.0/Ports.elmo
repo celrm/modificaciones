@@ -1,0 +1,23 @@
+var _user$project$Ports$fileSelected = _elm_lang$core$Native_Platform.outgoingPort(
+	'fileSelected',
+	function (v) {
+		return v;
+	});
+var _user$project$Ports$fileContentRead = _elm_lang$core$Native_Platform.incomingPort(
+	'fileContentRead',
+	A2(
+		_elm_lang$core$Json_Decode$andThen,
+		function (contents) {
+			return A2(
+				_elm_lang$core$Json_Decode$andThen,
+				function (filename) {
+					return _elm_lang$core$Json_Decode$succeed(
+						{contents: contents, filename: filename});
+				},
+				A2(_elm_lang$core$Json_Decode$field, 'filename', _elm_lang$core$Json_Decode$string));
+		},
+		A2(_elm_lang$core$Json_Decode$field, 'contents', _elm_lang$core$Json_Decode$string)));
+var _user$project$Ports$ScorePortData = F2(
+	function (a, b) {
+		return {contents: a, filename: b};
+	});
