@@ -3,25 +3,24 @@ module Info exposing (informacion)
 import Html exposing (Html)
 import Html.Attributes exposing (style)
 import Markdown
-
-import Types exposing (..)
 import Styles exposing (..)
+import Types exposing (..)
 
 
 informacion : Html Msg
 informacion =
   Markdown.toHtml
-    [ textStyle "20px"
-    , style
-        [ ("text-align", "justify")
-        , ("width", "650px")
-        , ("margin-left", "auto")
-        , ("margin-right", "auto")
-        ]
-    ] texto
+    ( textStyle "20px"
+    ++
+    [ style "text-align" "justify"
+    , style "width" "650px"
+    , style "margin-left" "auto"
+    , style "margin-right" "auto"
+    ]) texto
 
 
-texto = """
+texto =
+    """
 
 # Más información:
 
