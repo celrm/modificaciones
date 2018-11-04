@@ -1,13 +1,13 @@
 module Main exposing (main)
 
-import Browser exposing (element)
+import Browser
 import State exposing (init, subscriptions, update)
 import Types exposing (..)
 import View exposing (view)
 
 
 main =
-    element
+    Browser.document
         { init = init
         , update = update
         , view = view

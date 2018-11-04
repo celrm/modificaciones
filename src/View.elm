@@ -1,5 +1,6 @@
 module View exposing (view)
 
+import Browser
 import Functions exposing (modify)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -208,9 +209,10 @@ descargar model =
         ]
 
 
-view : Model -> Html Msg
+view : Model -> Browser.Document Msg
 view model =
-    div generalStyle
+  (Browser.Document "Modificaciones"
+    [ div generalStyle
         [ header
         , examinar model
         , selectors model.bloqueado
@@ -218,3 +220,5 @@ view model =
         , descargar (modify model)
         , informacion
         ]
+    ]
+  )
