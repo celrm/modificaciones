@@ -1,4 +1,4 @@
-port module Ports exposing (ScorePortData, fileContentRead, fileSelected)
+port module Ports exposing (..)
 
 
 type alias ScorePortData =

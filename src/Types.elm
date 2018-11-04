@@ -1,6 +1,6 @@
 module Types exposing (Escala, Model, Msg(..), Nota(..), Score, example)
 
-import Ports exposing (ScorePortData, fileContentRead, fileSelected)
+import Ports exposing (ScorePortData, fileSelected, fileContentRead)
 
 
 type Nota

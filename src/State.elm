@@ -1,6 +1,6 @@
 module State exposing (init, subscriptions, update)
 
-import Ports exposing (ScorePortData, fileContentRead, fileSelected)
+import Ports exposing (..)
 import Types exposing (..)
 
 
