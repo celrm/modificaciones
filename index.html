@@ -6,9 +6,12 @@
 </head>
 
 <body>
-  <script type="text/javascript" src="/_compile/Modificaciones.elm"></script>
+  <script src="build/elm.js"></script>
+  <div id="elm"></div>
   <script type="text/javascript">
-    var app = Elm.Main.fullscreen();
+    var app = Elm.Main.init({
+      node: document.getElementById('elm')
+    });
 
     app.ports.fileSelected.subscribe(
       function (id) {
