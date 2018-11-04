@@ -213,7 +213,10 @@ view : Model -> Browser.Document Msg
 view model =
   (Browser.Document "Modificaciones"
     [ div generalStyle
-        [ header
+        [ navbar 3
+        , br [] []
+        , br [] []
+        , header
         , examinar model
         , selectors model.bloqueado
         , entrada model.bloqueado
