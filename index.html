@@ -10,11 +10,10 @@
   <div id="elm"></div>
   <script type="text/javascript">
 
-  process.env['ELM_DEBUGGER'] = false;
-
     var app = Elm.Main.init({
       node: document.getElementById('elm')
     });
+      process.env['ELM_DEBUGGER'] = false;
 
     app.ports.fileSelected.subscribe(
       function (id) {
