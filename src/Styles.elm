@@ -165,13 +165,12 @@ squarefieldStyle s =
 aStyle : Bool -> String -> List (Attribute msg)
 aStyle this ref =
   [ Html.Attributes.href (if this then "" else ref)
-  , style "float" "center"
   , style "background-color" (if this then bold else suave)
   , style "color" "black"
-  , style "text-align" "center"
   , style "text-decoration" "none"
-  , style "padding" "15px 50px 15px 50px"
-  --, style "padding" "30px"
+  , style "padding" "2px"
+  , style "min-width" "210px"
+  , style "display" "inline-block"
   , style "border-width" "0px 3px 0px 3px"
   , style "border-style" "solid"
   , style "border-color" back
@@ -185,12 +184,10 @@ navbar this =
         (this==1,this==2,this==3)
   in
   Html.nav
-    [ style "overflow" "hidden"
-    , style "position" "fixed"
+    [ style "position" "fixed"
     , style "top" "0"
     , style "width" "100%"
-    , style "border-collapse" "collapse"
-    , style "padding" "10px"
+    --, style "padding" "10px"
     , style "background-color" back
     ]
     [ Html.a (aStyle one "https://matrices.netlify.com/")
@@ -199,4 +196,5 @@ navbar this =
       [ Html.text "Diagramas"]
     , Html.a (aStyle three "https://modificaciones.netlify.com/")
       [ Html.text "Modificaciones"]
+    , Html.div [style "min-width" "15px",style "display" "inline-block"] [Html.text " "]
     ]

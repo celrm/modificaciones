@@ -5943,15 +5943,15 @@ var author$project$Styles$aStyle = F2(
 				[
 					elm$html$Html$Attributes$href(
 					_this ? '' : ref),
-					A2(elm$html$Html$Attributes$style, 'float', 'center'),
 					A2(
 					elm$html$Html$Attributes$style,
 					'background-color',
 					_this ? author$project$Styles$bold : author$project$Styles$suave),
 					A2(elm$html$Html$Attributes$style, 'color', 'black'),
-					A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
 					A2(elm$html$Html$Attributes$style, 'text-decoration', 'none'),
-					A2(elm$html$Html$Attributes$style, 'padding', '15px 50px 15px 50px'),
+					A2(elm$html$Html$Attributes$style, 'padding', '2px'),
+					A2(elm$html$Html$Attributes$style, 'min-width', '210px'),
+					A2(elm$html$Html$Attributes$style, 'display', 'inline-block'),
 					A2(elm$html$Html$Attributes$style, 'border-width', '0px 3px 0px 3px'),
 					A2(elm$html$Html$Attributes$style, 'border-style', 'solid'),
 					A2(elm$html$Html$Attributes$style, 'border-color', author$project$Styles$back)
@@ -5959,6 +5959,7 @@ var author$project$Styles$aStyle = F2(
 			author$project$Styles$textStyle('1em'));
 	});
 var elm$html$Html$a = _VirtualDom_node('a');
+var elm$html$Html$div = _VirtualDom_node('div');
 var elm$html$Html$nav = _VirtualDom_node('nav');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
@@ -5971,12 +5972,9 @@ var author$project$Styles$navbar = function (_this) {
 		elm$html$Html$nav,
 		_List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$style, 'overflow', 'hidden'),
 				A2(elm$html$Html$Attributes$style, 'position', 'fixed'),
 				A2(elm$html$Html$Attributes$style, 'top', '0'),
 				A2(elm$html$Html$Attributes$style, 'width', '100%'),
-				A2(elm$html$Html$Attributes$style, 'border-collapse', 'collapse'),
-				A2(elm$html$Html$Attributes$style, 'padding', '10px'),
 				A2(elm$html$Html$Attributes$style, 'background-color', author$project$Styles$back)
 			]),
 		_List_fromArray(
@@ -6001,6 +5999,17 @@ var author$project$Styles$navbar = function (_this) {
 				_List_fromArray(
 					[
 						elm$html$Html$text('Modificaciones')
+					])),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2(elm$html$Html$Attributes$style, 'min-width', '15px'),
+						A2(elm$html$Html$Attributes$style, 'display', 'inline-block')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(' ')
 					]))
 			]));
 };
@@ -6013,7 +6022,6 @@ var author$project$Styles$buttonStyle = function (s) {
 		]);
 };
 var elm$html$Html$button = _VirtualDom_node('button');
-var elm$html$Html$div = _VirtualDom_node('div');
 var elm$html$Html$Attributes$download = function (fileName) {
 	return A2(elm$html$Html$Attributes$stringProperty, 'download', fileName);
 };
