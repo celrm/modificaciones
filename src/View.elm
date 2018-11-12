@@ -12,36 +12,8 @@ import Styles exposing (..)
 import Types exposing (..)
 
 
-doblecolumna : String -> List (Html Msg) -> List (Html Msg) -> Html Msg
-doblecolumna s a b =
-    div
-        [ style "padding"
-            (s
-                ++ "px 0px "
-                ++ (String.fromInt <| (\x -> 2 * x) <| Maybe.withDefault 0 <| String.toInt s)
-                ++ "px 0px"
-            )
-        ]
-        [ div [ style "float" "left", style "width" "50%" ]
-            [ div [ style "float" "right", style "width" "400px" ]
-                a
-            ]
-        , div [ style "float" "right", style "width" "50%" ]
-            [ div [ style "float" "left", style "width" "400px" ]
-                b
-            ]
-        ]
-
-
-header : Html Msg
-header =
-    h1
-        ( textStyle "2em" )
-        [ text "MODIFICACIÓN DE PARTITURAS" ]
-
-
-selectors : Bool -> Html Msg
-selectors bloqueado =
+opciones : Bool -> Html Msg
+opciones bloqueado =
     doblecolumna "100"
         [ label
             ( textStyle "20px" )
@@ -99,14 +71,12 @@ selectors bloqueado =
         ]
 
 
-entrada : Bool -> Html Msg
-entrada bloqueado =
+entradaIndiv : Bool -> Html Msg
+entradaIndiv bloqueado =
     div
         [ style "margin-bottom" "50px", style "overflow" "auto" ]
         [ table
-            [ style "margin-left" "auto"
-            , style "margin-right" "auto"
-            ]
+            centered
             [ tr []
                 (List.map
                     (\x ->
@@ -114,26 +84,26 @@ entrada bloqueado =
                             ( cellStyle
                             ++ [ style "text-align" "center"
                             , style "width" "42px"
-                            , style "font-family" "calibri"
-                            , style "font-size" "20px"
                             , style "padding" "3.5px 2px"
-                            ])
+                            ]
+                            ++ (textStyle "20px")
+                            )
                             [ text x ]
                     )
                  <|
                     [ "Do", "Do#", "Re", "Re#", "Mi", "Fa", "Fa#", "Sol", "Sol#", "La", "La#", "Si" ]
-                 --toString<|List.range 0 11
+                 -- toString<|List.range 0 11
                 )
             , tr []
                 (List.repeat 12
                     (td
-                        [ style "text-align" "center"
+                        ([ style "text-align" "center"
                         , style "width" "42px"
-                        , style "font-family" "calibri"
-                        , style "font-size" "20px"
                         , style "padding" "3.5px 2px"
                         , style "border" "0px none transparent"
                         ]
+                        ++ (textStyle "20px")
+                        )
                         [ text "↓" ]
                     )
                 )
@@ -201,9 +171,7 @@ descargar model =
             ]
             [ button
                 ( buttonStyle "150px"
-                ++ [ style "margin-top" "50px"
-                , style "margin-bottom" "50px"
-                ])
+                ++ [ style "margin" "50px 0px"])
                 [ text "Descargar" ]
             ]
         ]
@@ -214,12 +182,10 @@ view model =
   (Browser.Document "Modificaciones"
     [ div generalStyle
         [ navbar 3
-        , br [] []
-        , br [] []
-        , header
+        , titulo "MODIFICACIÓN DE PARTITURAS"
         , examinar model
-        , selectors model.bloqueado
-        , entrada model.bloqueado
+        , opciones model.bloqueado
+        , entradaIndiv model.bloqueado
         , descargar (modify model)
         , informacion
         ]

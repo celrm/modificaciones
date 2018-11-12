@@ -5956,9 +5956,10 @@ var author$project$Styles$aStyle = F2(
 					A2(elm$html$Html$Attributes$style, 'border-style', 'solid'),
 					A2(elm$html$Html$Attributes$style, 'border-color', author$project$Styles$back)
 				]),
-			author$project$Styles$textStyle('1em'));
+			author$project$Styles$textStyle('1.25em'));
 	});
 var elm$html$Html$a = _VirtualDom_node('a');
+var elm$html$Html$br = _VirtualDom_node('br');
 var elm$html$Html$div = _VirtualDom_node('div');
 var elm$html$Html$nav = _VirtualDom_node('nav');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
@@ -5969,57 +5970,75 @@ var author$project$Styles$navbar = function (_this) {
 	var two = _n0.b;
 	var three = _n0.c;
 	return A2(
-		elm$html$Html$nav,
-		_List_fromArray(
-			[
-				A2(elm$html$Html$Attributes$style, 'position', 'fixed'),
-				A2(elm$html$Html$Attributes$style, 'top', '0'),
-				A2(elm$html$Html$Attributes$style, 'width', '100%'),
-				A2(elm$html$Html$Attributes$style, 'background-color', author$project$Styles$back)
-			]),
+		elm$html$Html$div,
+		_List_Nil,
 		_List_fromArray(
 			[
 				A2(
-				elm$html$Html$a,
-				A2(author$project$Styles$aStyle, one, 'https://matrices.netlify.com/'),
+				elm$html$Html$nav,
 				_List_fromArray(
 					[
-						elm$html$Html$text('Matrices')
-					])),
-				A2(
-				elm$html$Html$a,
-				A2(author$project$Styles$aStyle, two, 'https://diagramas.netlify.com/'),
-				_List_fromArray(
-					[
-						elm$html$Html$text('Diagramas')
-					])),
-				A2(
-				elm$html$Html$a,
-				A2(author$project$Styles$aStyle, three, 'https://modificaciones.netlify.com/'),
-				_List_fromArray(
-					[
-						elm$html$Html$text('Modificaciones')
-					])),
-				A2(
-				elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2(elm$html$Html$Attributes$style, 'min-width', '15px'),
-						A2(elm$html$Html$Attributes$style, 'display', 'inline-block')
+						A2(elm$html$Html$Attributes$style, 'position', 'fixed'),
+						A2(elm$html$Html$Attributes$style, 'top', '0'),
+						A2(elm$html$Html$Attributes$style, 'width', '100%'),
+						A2(elm$html$Html$Attributes$style, 'background-color', author$project$Styles$back)
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text(' ')
-					]))
+						A2(
+						elm$html$Html$a,
+						A2(author$project$Styles$aStyle, one, 'https://matrices.netlify.com/'),
+						_List_fromArray(
+							[
+								elm$html$Html$text('Matrices')
+							])),
+						A2(
+						elm$html$Html$a,
+						A2(author$project$Styles$aStyle, two, 'https://diagramas.netlify.com/'),
+						_List_fromArray(
+							[
+								elm$html$Html$text('Diagramas')
+							])),
+						A2(
+						elm$html$Html$a,
+						A2(author$project$Styles$aStyle, three, 'https://modificaciones.netlify.com/'),
+						_List_fromArray(
+							[
+								elm$html$Html$text('Modificaciones')
+							])),
+						A2(
+						elm$html$Html$div,
+						_List_fromArray(
+							[
+								A2(elm$html$Html$Attributes$style, 'min-width', '15px'),
+								A2(elm$html$Html$Attributes$style, 'display', 'inline-block')
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text(' ')
+							]))
+					])),
+				A2(elm$html$Html$br, _List_Nil, _List_Nil),
+				A2(elm$html$Html$br, _List_Nil, _List_Nil)
+			]));
+};
+var elm$html$Html$h1 = _VirtualDom_node('h1');
+var author$project$Styles$titulo = function (s) {
+	return A2(
+		elm$html$Html$h1,
+		author$project$Styles$textStyle('2em'),
+		_List_fromArray(
+			[
+				elm$html$Html$text(s)
 			]));
 };
 var author$project$Styles$buttonStyle = function (s) {
-	return _List_fromArray(
-		[
-			A2(elm$html$Html$Attributes$style, 'font-family', 'calibri'),
-			A2(elm$html$Html$Attributes$style, 'font-size', '20px'),
-			A2(elm$html$Html$Attributes$style, 'width', s)
-		]);
+	return _Utils_ap(
+		_List_fromArray(
+			[
+				A2(elm$html$Html$Attributes$style, 'width', s)
+			]),
+		author$project$Styles$textStyle('20px'));
 };
 var elm$html$Html$button = _VirtualDom_node('button');
 var elm$html$Html$Attributes$download = function (fileName) {
@@ -6057,8 +6076,7 @@ var author$project$View$descargar = function (model) {
 							author$project$Styles$buttonStyle('150px'),
 							_List_fromArray(
 								[
-									A2(elm$html$Html$Attributes$style, 'margin-top', '50px'),
-									A2(elm$html$Html$Attributes$style, 'margin-bottom', '50px')
+									A2(elm$html$Html$Attributes$style, 'margin', '50px 0px')
 								])),
 						_List_fromArray(
 							[
@@ -6077,6 +6095,11 @@ var author$project$Styles$cellStyle = _List_fromArray(
 		A2(elm$html$Html$Attributes$style, 'font-family', 'calibri'),
 		A2(elm$html$Html$Attributes$style, 'background-color', author$project$Styles$suave)
 	]);
+var author$project$Styles$centered = _List_fromArray(
+	[
+		A2(elm$html$Html$Attributes$style, 'margin-left', 'auto'),
+		A2(elm$html$Html$Attributes$style, 'margin-right', 'auto')
+	]);
 var author$project$Types$Do = {$: 'Do'};
 var author$project$Types$Dos = {$: 'Dos'};
 var author$project$Types$Fa = {$: 'Fa'};
@@ -6090,14 +6113,14 @@ var author$project$Types$Si = {$: 'Si'};
 var author$project$Types$Sol = {$: 'Sol'};
 var author$project$Types$Sols = {$: 'Sols'};
 var author$project$Styles$squarefieldStyle = function (s) {
-	return _List_fromArray(
-		[
-			A2(elm$html$Html$Attributes$style, 'width', s),
-			A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
-			A2(elm$html$Html$Attributes$style, 'font-family', 'calibri'),
-			A2(elm$html$Html$Attributes$style, 'font-size', '20px'),
-			A2(elm$html$Html$Attributes$style, 'padding', '3.5px 2px')
-		]);
+	return _Utils_ap(
+		_List_fromArray(
+			[
+				A2(elm$html$Html$Attributes$style, 'width', s),
+				A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+				A2(elm$html$Html$Attributes$style, 'padding', '3.5px 2px')
+			]),
+		author$project$Styles$textStyle('20px'));
 };
 var author$project$Types$Introducir = F2(
 	function (a, b) {
@@ -6260,7 +6283,7 @@ var elm$core$List$repeat = F2(
 	});
 var elm$html$Html$table = _VirtualDom_node('table');
 var elm$html$Html$tr = _VirtualDom_node('tr');
-var author$project$View$entrada = function (bloqueado) {
+var author$project$View$entradaIndiv = function (bloqueado) {
 	return A2(
 		elm$html$Html$div,
 		_List_fromArray(
@@ -6272,11 +6295,7 @@ var author$project$View$entrada = function (bloqueado) {
 			[
 				A2(
 				elm$html$Html$table,
-				_List_fromArray(
-					[
-						A2(elm$html$Html$Attributes$style, 'margin-left', 'auto'),
-						A2(elm$html$Html$Attributes$style, 'margin-right', 'auto')
-					]),
+				author$project$Styles$centered,
 				_List_fromArray(
 					[
 						A2(
@@ -6289,14 +6308,14 @@ var author$project$View$entrada = function (bloqueado) {
 									elm$html$Html$td,
 									_Utils_ap(
 										author$project$Styles$cellStyle,
-										_List_fromArray(
-											[
-												A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
-												A2(elm$html$Html$Attributes$style, 'width', '42px'),
-												A2(elm$html$Html$Attributes$style, 'font-family', 'calibri'),
-												A2(elm$html$Html$Attributes$style, 'font-size', '20px'),
-												A2(elm$html$Html$Attributes$style, 'padding', '3.5px 2px')
-											])),
+										_Utils_ap(
+											_List_fromArray(
+												[
+													A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+													A2(elm$html$Html$Attributes$style, 'width', '42px'),
+													A2(elm$html$Html$Attributes$style, 'padding', '3.5px 2px')
+												]),
+											author$project$Styles$textStyle('20px'))),
 									_List_fromArray(
 										[
 											elm$html$Html$text(x)
@@ -6312,15 +6331,15 @@ var author$project$View$entrada = function (bloqueado) {
 							12,
 							A2(
 								elm$html$Html$td,
-								_List_fromArray(
-									[
-										A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
-										A2(elm$html$Html$Attributes$style, 'width', '42px'),
-										A2(elm$html$Html$Attributes$style, 'font-family', 'calibri'),
-										A2(elm$html$Html$Attributes$style, 'font-size', '20px'),
-										A2(elm$html$Html$Attributes$style, 'padding', '3.5px 2px'),
-										A2(elm$html$Html$Attributes$style, 'border', '0px none transparent')
-									]),
+								_Utils_ap(
+									_List_fromArray(
+										[
+											A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
+											A2(elm$html$Html$Attributes$style, 'width', '42px'),
+											A2(elm$html$Html$Attributes$style, 'padding', '3.5px 2px'),
+											A2(elm$html$Html$Attributes$style, 'border', '0px none transparent')
+										]),
+									author$project$Styles$textStyle('20px')),
 								_List_fromArray(
 									[
 										elm$html$Html$text('↓')
@@ -6346,12 +6365,8 @@ var author$project$View$entrada = function (bloqueado) {
 					]))
 			]));
 };
-var author$project$Styles$fileStyle = _List_fromArray(
+var author$project$Styles$weird = _List_fromArray(
 	[
-		A2(elm$html$Html$Attributes$style, 'font-family', 'calibri'),
-		A2(elm$html$Html$Attributes$style, 'font-size', '20px'),
-		A2(elm$html$Html$Attributes$style, 'margin-left', 'auto'),
-		A2(elm$html$Html$Attributes$style, 'margin-right', 'auto'),
 		A2(elm$html$Html$Attributes$style, 'padding', '3.5px 10px'),
 		A2(elm$html$Html$Attributes$style, 'appearance', 'none'),
 		A2(elm$html$Html$Attributes$style, '-moz-appearance', 'none'),
@@ -6365,6 +6380,11 @@ var author$project$Styles$fileStyle = _List_fromArray(
 		A2(elm$html$Html$Attributes$style, '-moz-border-radius', '20px 20px 20px 20px'),
 		A2(elm$html$Html$Attributes$style, '-webkit-border-radius', '20px 20px 20px 20px')
 	]);
+var author$project$Styles$fileStyle = _Utils_ap(
+	author$project$Styles$weird,
+	_Utils_ap(
+		author$project$Styles$textStyle('20px'),
+		author$project$Styles$centered));
 var author$project$Types$ScoreSelected = {$: 'ScoreSelected'};
 var elm$html$Html$Attributes$accept = elm$html$Html$Attributes$stringProperty('accept');
 var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
@@ -6396,14 +6416,62 @@ var author$project$View$examinar = function (model) {
 				])),
 		_List_Nil);
 };
-var elm$html$Html$h1 = _VirtualDom_node('h1');
-var author$project$View$header = A2(
-	elm$html$Html$h1,
-	author$project$Styles$textStyle('2em'),
-	_List_fromArray(
-		[
-			elm$html$Html$text('MODIFICACIÓN DE PARTITURAS')
-		]));
+var author$project$Styles$doblecolumna = F3(
+	function (s, a, b) {
+		var tamancho = '400px';
+		return A2(
+			elm$html$Html$div,
+			_List_fromArray(
+				[
+					A2(
+					elm$html$Html$Attributes$style,
+					'padding',
+					s + ('px 0px ' + (elm$core$String$fromInt(
+						2 * A2(
+							elm$core$Maybe$withDefault,
+							0,
+							elm$core$String$toInt(s))) + 'px 0px')))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					elm$html$Html$div,
+					_List_fromArray(
+						[
+							A2(elm$html$Html$Attributes$style, 'float', 'left'),
+							A2(elm$html$Html$Attributes$style, 'width', '50%')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2(elm$html$Html$Attributes$style, 'float', 'right'),
+									A2(elm$html$Html$Attributes$style, 'width', tamancho)
+								]),
+							a)
+						])),
+					A2(
+					elm$html$Html$div,
+					_List_fromArray(
+						[
+							A2(elm$html$Html$Attributes$style, 'float', 'right'),
+							A2(elm$html$Html$Attributes$style, 'width', '50%')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2(elm$html$Html$Attributes$style, 'float', 'left'),
+									A2(elm$html$Html$Attributes$style, 'width', tamancho)
+								]),
+							b)
+						]))
+				]));
+	});
 var author$project$Types$CambiarNombreEscala = function (a) {
 	return {$: 'CambiarNombreEscala', a: a};
 };
@@ -6435,66 +6503,7 @@ var author$project$Types$Preescalar = function (a) {
 	};
 };
 var author$project$Types$VolverAEscalaAnterior = {$: 'VolverAEscalaAnterior'};
-var author$project$View$doblecolumna = F3(
-	function (s, a, b) {
-		return A2(
-			elm$html$Html$div,
-			_List_fromArray(
-				[
-					A2(
-					elm$html$Html$Attributes$style,
-					'padding',
-					s + ('px 0px ' + (elm$core$String$fromInt(
-						function (x) {
-							return 2 * x;
-						}(
-							A2(
-								elm$core$Maybe$withDefault,
-								0,
-								elm$core$String$toInt(s)))) + 'px 0px')))
-				]),
-			_List_fromArray(
-				[
-					A2(
-					elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2(elm$html$Html$Attributes$style, 'float', 'left'),
-							A2(elm$html$Html$Attributes$style, 'width', '50%')
-						]),
-					_List_fromArray(
-						[
-							A2(
-							elm$html$Html$div,
-							_List_fromArray(
-								[
-									A2(elm$html$Html$Attributes$style, 'float', 'right'),
-									A2(elm$html$Html$Attributes$style, 'width', '400px')
-								]),
-							a)
-						])),
-					A2(
-					elm$html$Html$div,
-					_List_fromArray(
-						[
-							A2(elm$html$Html$Attributes$style, 'float', 'right'),
-							A2(elm$html$Html$Attributes$style, 'width', '50%')
-						]),
-					_List_fromArray(
-						[
-							A2(
-							elm$html$Html$div,
-							_List_fromArray(
-								[
-									A2(elm$html$Html$Attributes$style, 'float', 'left'),
-									A2(elm$html$Html$Attributes$style, 'width', '400px')
-								]),
-							b)
-						]))
-				]));
-	});
 var elm$core$Basics$not = _Basics_not;
-var elm$html$Html$br = _VirtualDom_node('br');
 var elm$html$Html$label = _VirtualDom_node('label');
 var elm$html$Html$Attributes$checked = elm$html$Html$Attributes$boolProperty('checked');
 var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
@@ -6504,9 +6513,9 @@ var elm$html$Html$Events$onClick = function (msg) {
 		'click',
 		elm$json$Json$Decode$succeed(msg));
 };
-var author$project$View$selectors = function (bloqueado) {
+var author$project$View$opciones = function (bloqueado) {
 	return A3(
-		author$project$View$doblecolumna,
+		author$project$Styles$doblecolumna,
 		'100',
 		_List_fromArray(
 			[
@@ -6614,12 +6623,10 @@ var author$project$View$view = function (model) {
 				_List_fromArray(
 					[
 						author$project$Styles$navbar(3),
-						A2(elm$html$Html$br, _List_Nil, _List_Nil),
-						A2(elm$html$Html$br, _List_Nil, _List_Nil),
-						author$project$View$header,
+						author$project$Styles$titulo('MODIFICACIÓN DE PARTITURAS'),
 						author$project$View$examinar(model),
-						author$project$View$selectors(model.bloqueado),
-						author$project$View$entrada(model.bloqueado),
+						author$project$View$opciones(model.bloqueado),
+						author$project$View$entradaIndiv(model.bloqueado),
 						author$project$View$descargar(
 						author$project$Functions$modify(model)),
 						author$project$Info$informacion
