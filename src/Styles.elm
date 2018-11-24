@@ -128,9 +128,9 @@ littlebuttonStyle =
     ++ ( textStyle "20px" )
 
 
-fieldStyle : List (Attribute msg)
-fieldStyle =
-    [ style "width" "650px"
+fieldStyle : String -> List (Attribute msg)
+fieldStyle s =
+    [ style "width" s
     , style "text-align" "center"
     , style "border-radius" "20px 20px 20px 20px"
     ]
@@ -192,7 +192,7 @@ originalrow r =
 entrada : Attribute msg -> Html msg
 entrada inp =
     input
-        ( fieldStyle
+        ( fieldStyle "650px"
         ++ [ style "margin-top" "50px"
         , style "margin-bottom" "50px"
         , placeholder "4 5 7 1 6 3 8 2 11 0 9 10"
@@ -236,9 +236,6 @@ aStyle this ref =
 
 navbar : Int -> Html msg
 navbar this =
-  let (one,two,three) =
-        (this==1,this==2,this==3)
-  in
   div []
   [ nav
     [ style "position" "fixed"
@@ -246,12 +243,14 @@ navbar this =
     , style "width" "100%"
     , style "background-color" back
     ]
-    [ a (aStyle one "https://matrices.netlify.com/")
+    [ a (aStyle (this==1) "https://matrices.netlify.com/")
       [ text "Matrices"]
-    , a (aStyle two "https://diagramas.netlify.com/")
+    , a (aStyle (this==2) "https://diagramas.netlify.com/")
       [ text "Diagramas"]
-    , a (aStyle three "https://modificaciones.netlify.com/")
+    , a (aStyle (this==3) "https://modificaciones.netlify.com/")
       [ text "Modificaciones"]
+    , a (aStyle (this==4) "https://escalas.netlify.com/")
+      [ text "Escalas"]
     , div [style "min-width" "15px",style "display" "inline-block"] [text " "]
     ]
     , br [] []
