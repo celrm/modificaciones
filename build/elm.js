@@ -5965,10 +5965,6 @@ var elm$html$Html$nav = _VirtualDom_node('nav');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
 var author$project$Styles$navbar = function (_this) {
-	var _n0 = _Utils_Tuple3(_this === 1, _this === 2, _this === 3);
-	var one = _n0.a;
-	var two = _n0.b;
-	var three = _n0.c;
 	return A2(
 		elm$html$Html$div,
 		_List_Nil,
@@ -5987,24 +5983,31 @@ var author$project$Styles$navbar = function (_this) {
 					[
 						A2(
 						elm$html$Html$a,
-						A2(author$project$Styles$aStyle, one, 'https://matrices.netlify.com/'),
+						A2(author$project$Styles$aStyle, _this === 1, 'https://matrices.netlify.com/'),
 						_List_fromArray(
 							[
 								elm$html$Html$text('Matrices')
 							])),
 						A2(
 						elm$html$Html$a,
-						A2(author$project$Styles$aStyle, two, 'https://diagramas.netlify.com/'),
+						A2(author$project$Styles$aStyle, _this === 2, 'https://diagramas.netlify.com/'),
 						_List_fromArray(
 							[
 								elm$html$Html$text('Diagramas')
 							])),
 						A2(
 						elm$html$Html$a,
-						A2(author$project$Styles$aStyle, three, 'https://modificaciones.netlify.com/'),
+						A2(author$project$Styles$aStyle, _this === 3, 'https://modificaciones.netlify.com/'),
 						_List_fromArray(
 							[
 								elm$html$Html$text('Modificaciones')
+							])),
+						A2(
+						elm$html$Html$a,
+						A2(author$project$Styles$aStyle, _this === 4, 'https://escalas.netlify.com/'),
+						_List_fromArray(
+							[
+								elm$html$Html$text('Escalas')
 							])),
 						A2(
 						elm$html$Html$div,
