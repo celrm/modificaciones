@@ -249,8 +249,8 @@ navbar this =
       [ text "Diagramas"]
     , a (aStyle (this==3) "https://modificaciones.netlify.com/")
       [ text "Modificaciones"]
-    , a (aStyle (this==4) "https://escalas.netlify.com/")
-      [ text "Escalas"]
+    -- , a (aStyle (this==4) "https://escalas.netlify.com/")
+      -- [ text "Escalas"]
     , div [style "min-width" "15px",style "display" "inline-block"] [text " "]
     ]
     , br [] []
