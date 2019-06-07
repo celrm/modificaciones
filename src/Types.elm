@@ -1,7 +1,5 @@
 module Types exposing (Escala, Model, Msg(..), Nota(..), Score, example)
-
-import Ports exposing (ScorePortData, fileSelected, fileContentRead)
-
+import File exposing (File)
 
 type Nota
     = Do
@@ -19,8 +17,12 @@ type Nota
 
 
 type Msg
-    = ScoreSelected
-    | ScoreRead ScorePortData
+    = SelectScores
+    | GotFiles File (List File)
+    | DragEnter
+    | DragLeave
+    | Añadir String String
+    | Descargar
     | Introducir Nota String
     | Preescalar String Int Int Int Int Int Int Int Int Int Int Int Int
     | CambiarNombreEscala String
@@ -51,8 +53,8 @@ type alias Escala =
 
 
 type alias Model =
-    { id : String
-    , mScore : Maybe Score
+    { hover : Bool
+    , scores : List Score
     , escala : Escala
     , escalaAnterior : Escala
     , bloqueado : Bool

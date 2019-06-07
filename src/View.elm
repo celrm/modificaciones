@@ -1,15 +1,54 @@
 module View exposing (view)
 
 import Browser
-import Functions exposing (modify)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (on, onClick, onFocus, onInput)
-import Http
+import Html.Events exposing (..)
 import Info exposing (informacion)
-import Json.Decode
+import Json.Decode as D
 import Styles exposing (..)
 import Types exposing (..)
+import File exposing (File)
+
+
+dragNdrop : Model -> Html Msg
+dragNdrop model =
+  div
+    ( dropStyle model.hover ++
+      [ hijackOn "dragenter" (D.succeed DragEnter)
+      , hijackOn "dragover" (D.succeed DragEnter)
+      , hijackOn "dragleave" (D.succeed DragLeave)
+      , hijackOn "drop" dropDecoder
+      ]
+    )
+    ([ button
+        ( buttonStyle "150px" ++
+          [ onClick SelectScores
+          , style "margin" "20px" ]
+        )
+        [ text "Examinar" ]
+    ] ++
+      ( List.map
+        (\score ->
+          span
+            ([ style "color" "#ccc" ] ++ textStyle "1em")
+            [ text (.filename score) ]
+        )
+        model.scores
+      )
+    )
+
+dropDecoder : D.Decoder Msg
+dropDecoder =
+  D.at ["dataTransfer","files"] (D.oneOrMore GotFiles File.decoder)
+
+hijackOn : String -> D.Decoder msg -> Attribute msg
+hijackOn event decoder =
+  preventDefaultOn event (D.map hijack decoder)
+
+hijack : msg -> (msg, Bool)
+hijack msg =
+  (msg, True)
 
 
 opciones : Bool -> Html Msg
@@ -138,43 +177,17 @@ recuadrin b s n =
         ]
 
 
-examinar : Model -> Html Msg
-examinar model =
-    input
-        ( fileStyle
-        ++ [ style "margin-top" "50px"
-        , type_ "file"
-        , id model.id
-        , accept ".mscx"
-        , on "change"
-            (Json.Decode.succeed ScoreSelected)
-        ])
-        []
-
-
-descargar : Model -> Html Msg
-descargar model =
-    let
-        scoreDownload =
-            case model.mScore of
-                Just i ->
-                    i
-
-                Nothing ->
-                    example
-    in
-    div []
-        [ a
-            [ type_ "button"
-            , href <| "data:text/plain;charset=utf-8," ++ scoreDownload.contents
-            , download scoreDownload.filename
-            ]
-            [ button
-                ( buttonStyle "150px"
-                ++ [ style "margin" "50px 0px"])
-                [ text "Descargar" ]
-            ]
-        ]
+descargar : Html Msg
+descargar =
+  div []
+    [ button
+        ( buttonStyle "150px" ++
+          [ style "margin" "0px 0px 50px 0px"
+          , onClick Descargar
+          ]
+        )
+      [ text "Descargar" ]
+    ]
 
 
 view : Model -> Browser.Document Msg
@@ -183,10 +196,10 @@ view model =
     [ div generalStyle
         [ navbar 3
         , titulo "MODIFICACIÓN DE PARTITURAS"
-        , examinar model
+        , dragNdrop model
         , opciones model.bloqueado
         , entradaIndiv model.bloqueado
-        , descargar (modify model)
+        , descargar
         , informacion
         ]
     ]

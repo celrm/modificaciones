@@ -13,6 +13,12 @@ suave = "#EEEEFF"
 bold : String
 bold = "#BBBBFF"
 
+littleFont : String
+littleFont = "20px"
+
+bigFont : String
+bigFont = "30px"
+
 generalStyle : List (Attribute msg)
 generalStyle =
     [ style "text-align" "center"
@@ -95,13 +101,13 @@ centered =
 buttonStyle : String -> List (Attribute msg)
 buttonStyle s =
     [ style "width" s ]
-    ++ ( textStyle "20px" )
+    ++ ( textStyle littleFont )
 
 
 fileStyle : List (Attribute msg)
 fileStyle =
     weird
-    ++ ( textStyle "20px" )
+    ++ ( textStyle littleFont )
     ++ centered
 
 weird : List (Attribute msg)
@@ -125,7 +131,7 @@ littlebuttonStyle : List (Attribute msg)
 littlebuttonStyle =
     [ style "width" "50px" ]
     ++ weird
-    ++ ( textStyle "20px" )
+    ++ ( textStyle littleFont )
 
 
 fieldStyle : String -> List (Attribute msg)
@@ -134,7 +140,7 @@ fieldStyle s =
     , style "text-align" "center"
     , style "border-radius" "20px 20px 20px 20px"
     ]
-    ++ ( textStyle "30px" )
+    ++ ( textStyle bigFont )
 
 
 squarefieldStyle : String -> List (Attribute msg)
@@ -143,7 +149,20 @@ squarefieldStyle s =
     , style "text-align" "center"
     , style "padding" "3.5px 2px"
     ]
-    ++ ( textStyle "20px" )
+    ++ ( textStyle littleFont )
+
+dropStyle : Bool -> List (Attribute msg)
+dropStyle b =
+    [ style "border" (if b then "6px dashed purple" else "6px dashed #ccc")
+    , style "border-radius" "20px"
+    , style "width" "400px"
+    , style "margin" "50px auto"
+    , style "padding" "20px"
+    , style "display" "flex"
+    , style "flex-direction" "column"
+    , style "justify-content" "center"
+    , style "align-items" "center"
+    ]
 
 doblecolumna : String -> List (Html msg) -> List (Html msg) -> Html msg
 doblecolumna s a b =
@@ -189,13 +208,13 @@ originalrow r =
         ]
 
 
-entrada : Attribute msg -> Html msg
-entrada inp =
+entrada : String -> String -> Attribute msg -> Html msg
+entrada wid pl inp =
     input
-        ( fieldStyle "650px"
+        ( fieldStyle wid
         ++ [ style "margin-top" "50px"
         , style "margin-bottom" "50px"
-        , placeholder "4 5 7 1 6 3 8 2 11 0 9 10"
+        , placeholder pl
         , inp
         ])
         []
@@ -206,10 +225,10 @@ bloquealeatorio longitud aleatorio =
     div
         []
         [ span
-            (textStyle "20px")
+            ( textStyle littleFont )
             [ text "Serie aleatoria de longitud " ]
         , input
-            ( squarefieldStyle "1em"
+            ( squarefieldStyle littleFont
             ++ [ placeholder "12"
             , longitud
             ])

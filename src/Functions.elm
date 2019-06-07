@@ -5,45 +5,45 @@ import Regex
 import Types exposing (..)
 
 
-getDifference : Model -> Int -> Int
-getDifference model k =
+getDifference : Escala -> Int -> Int
+getDifference escala k =
     let
         arr =
             if k == 0 then
-                model.escala.do
+                escala.do
 
             else if k == 1 then
-                model.escala.dos
+                escala.dos
 
             else if k == 2 then
-                model.escala.re
+                escala.re
 
             else if k == 3 then
-                model.escala.res
+                escala.res
 
             else if k == 4 then
-                model.escala.mi
+                escala.mi
 
             else if k == 5 then
-                model.escala.fa
+                escala.fa
 
             else if k == 6 then
-                model.escala.fas
+                escala.fas
 
             else if k == 7 then
-                model.escala.sol
+                escala.sol
 
             else if k == 8 then
-                model.escala.sols
+                escala.sols
 
             else if k == 9 then
-                model.escala.la
+                escala.la
 
             else if k == 10 then
-                model.escala.las
+                escala.las
 
             else
-                model.escala.si
+                escala.si
     in
     arr - k
 
@@ -110,7 +110,7 @@ tpc2note k =
         11
 
 
-detpc : Model -> (String -> String)
+detpc : Escala -> (String -> String)
 detpc model =
     Regex.replace
         (Maybe.withDefault Regex.never (Regex.fromString "<tpc>[0-9]+</tpc>"))
@@ -133,7 +133,7 @@ detpc model =
         )
 
 
-depitch : Model -> (String -> String)
+depitch : Escala -> (String -> String)
 depitch model =
     Regex.replace
         (Maybe.withDefault Regex.never (Regex.fromString "<pitch>[0-9]+</pitch>"))
@@ -154,29 +154,19 @@ depitch model =
                 ++ "</pitch>"
         )
 
-
-modify : Model -> Model
-modify model =
+modify : Escala -> Score -> Score
+modify escala score =
     let
-        scoreModify =
-            case model.mScore of
-                Just i ->
-                    i
-
-                Nothing ->
-                    example
+        finducida =
+          escala
     in
-    { model
-        | mScore =
-            Just
-                { contents =
-                    scoreModify.contents
-                        |> depitch model
-                        |> detpc model
-                , filename =
-                    String.dropRight 5 scoreModify.filename
-                        ++ " - "
-                        ++ model.escala.nombre
-                        ++ ".mscx"
-                }
+    { contents =
+        score.contents
+            |> depitch finducida
+            |> detpc finducida
+    , filename =
+        String.dropRight 5 score.filename
+            ++ " - "
+            ++ escala.nombre
+            ++ ".mscx"
     }

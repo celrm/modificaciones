@@ -1,14 +1,18 @@
 module State exposing (init, subscriptions, update)
 
-import Ports exposing (..)
+import File.Select as Select
+import File.Download as Download
+import File exposing (File)
 import Types exposing (..)
+import Functions exposing (modify)
+import Task
 
 
 init : () -> (Model, Cmd Msg)
 init _ =
-  ( { id = "ScoreInputId"
-      , mScore = Just example
-      , escala =
+  ( { hover = False
+    , scores = []
+    , escala =
             { nombre = "Cromática"
             , do = 0
             , dos = 1
@@ -47,21 +51,57 @@ init _ =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        ScoreSelected ->
+        SelectScores ->
             ( model
-            , fileSelected model.id
+            , Select.files ["application/octet-stream"] GotFiles
             )
 
-        ScoreRead data ->
-            let
-                newScore =
-                    { contents = data.contents
-                    , filename = data.filename
-                    }
-            in
-            ( { model | mScore = Just newScore }
-            , Cmd.none
-            )
+        GotFiles file files ->
+          let newFiles =
+                file :: files
+              oneCmd f =
+                Task.perform (Añadir (File.name f)) (File.toString f)
+          in
+          ( { model
+            | hover = False
+            , scores = []
+            }
+            , Cmd.batch (List.map oneCmd newFiles)
+          )
+
+        Añadir name str ->
+          let
+              newScore =
+                  { contents = str
+                  , filename = name
+                  }
+          in
+          ( { model
+            | scores = newScore :: model.scores
+            , hover = False
+            }
+          , Cmd.none
+          )
+
+        DragEnter ->
+          ( { model | hover = True }
+          , Cmd.none
+          )
+
+        DragLeave ->
+          ( { model | hover = False }
+          , Cmd.none
+          )
+
+        Descargar ->
+          let newScores =
+                List.map (modify model.escala) model.scores
+              oneCmd score =
+                (Download.string score.filename "text/plain" score.contents)
+          in
+          ( model
+          , Cmd.batch (List.map oneCmd newScores)
+          )
 
         Preescalar nombre zero one two three four five six seven eigth nine ten eleven ->
             ( { model
@@ -166,4 +206,4 @@ update msg model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    fileContentRead ScoreRead
+    Sub.none
