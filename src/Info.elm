@@ -26,13 +26,13 @@ texto =
 
 ## Instrucciones.
 
-  1. Antes de subir una partitura, ésta se debe abrir en el programa _Musescore_ y guardar como _Archivo Musescore sin Comprimir_ (&ast;.mscx), que no es la opción predeterminada, sino la segunda.
+  1. Antes de subir cualquier partitura, ésta se debe abrir en el programa _Musescore_ y guardar como _Archivo Musescore sin Comprimir_ (&ast;.mscx), que no es la opción predeterminada, sino la segunda.
 
-  2. Después, se podrá hacer click en el botón __Examinar__ para buscar la partitura descomprimida. Una vez subida, se pueden descargar tantas modificaciones de la misma como se quiera.
+  2. Después, se podrá hacer click en el botón __Examinar__ para buscar las partituras, o bien arrastrarlas y soltarlas en el recuadro rayado. Se pueden modificar varias partituras a la vez. Una vez subidas, se pueden descargar tantas modificaciones de ellas como se quiera.
 
   3. Se escoge entonces la escala deseada mediante los selectores y/o los cuadros de texto, además del nombre de la escala, si procede.
 
-  4. Por último, se descarga el nuevo archivo mediante el botón __Descargar__, con el nombre original concatenado al nombre de la escala.
+  4. Por último, se descargan los nuevos archivos mediante el botón __Descargar__, con el nombre original de cada partitura concatenado al nombre de la escala.
 
 ## ¿Cómo se modifican las partituras?
 

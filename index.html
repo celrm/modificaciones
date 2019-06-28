@@ -5708,7 +5708,7 @@ var author$project$State$update = F2(
 					elm$core$Platform$Cmd$none);
 		}
 	});
-var author$project$Info$texto = '\n\n# Más información:\n\n## Instrucciones.\n\n  1. Antes de subir una partitura, ésta se debe abrir en el programa _Musescore_ y guardar como _Archivo Musescore sin Comprimir_ (&ast;.mscx), que no es la opción predeterminada, sino la segunda.\n\n  2. Después, se podrá hacer click en el botón __Examinar__ para buscar la partitura descomprimida. Una vez subida, se pueden descargar tantas modificaciones de la misma como se quiera.\n\n  3. Se escoge entonces la escala deseada mediante los selectores y/o los cuadros de texto, además del nombre de la escala, si procede.\n\n  4. Por último, se descarga el nuevo archivo mediante el botón __Descargar__, con el nombre original concatenado al nombre de la escala.\n\n## ¿Cómo se modifican las partituras?\n\n  La altura de cada nota se modifica independientemente según la escala escogida. Se puede escoger una escala predefinida o definir una propia. El primer recuadro indica a qué nota se envía cada Do de la partitura; el segundo, adónde se envía cada Do#; el tercero para el Re, etc.\n\n  Por ejemplo, la escala cromática `0 1 2 3 4 5 6 7 8 9 10 11` manda cada nota 0 (Do) al 0, cada nota 1 (Do#) al 1, y así sucesivamente; es decir, es la función identidad. En cambio, la escala `0 0 0 0 0 0 0 0 0 0 0 0` envía cada nota al Do más cercano a ella inferiormente.\n\n  Se pueden usar todo tipo de números enteros: positivos o negativos, y de cualquier tamaño. La escala `12 13 14 15 16 17 18 19 20 21 22 23` enviaría cada nota a su octava superior; la escala `-12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1` enviaría cada nota a su octava inferior.\n\n  Al definir una escala hay que tener en cuenta que no solo se escogen las notas que aparecerán en ella, sino también cuántas veces estarán éstas repetidas y de qué manera se distribuyen por la partitura. Aquí la definición de _escala_ no es la usual. Es, más bien, una función transformativa definida directamente para todas sus entradas.\n\n## ¿Por qué este convenio? ¿Por qué no el natural?\n\n  El convenio más natural para modificar cada nota sería indicar cuántos semitonos se le quiere sumar o restar. Las series de números no serían entonces escalas, sino instrucciones individuales.\n\n  Aunque cada nota se sigue modificando individualmente, el sentido de la modificación debe ser siempre global. Algo como `0 -1 0 -1 0 -1 -1 0 -1 0 -1 +1` no da apenas información sobre lo que se está modificando. De hecho, un mero intercambio entre dos números haría que la escala resultante fuese totalmente distinta, con otra sonoridad. Sería un gran cambio en la nueva pieza sin ser un gran cambio en la serie de números.\n\n  En cambio, aporta más perspectiva y significado ver las modificaciones como parte de un todo, con visión de conjunto. Por un lado, se aprecia cuántas veces aparece cada nota y de cuántas notas estará compuesta la partitura. Por otro, se ve más fácilmente si una escala es conocida o no lo es. La serie de notas anterior formaba la escala pentafónica, pero no se podía averiguar a simple vista sin calcular el otro formato.\n\n## ¿Cuáles son las escalas predefinidas?\n\n  La escala __Pentafónica__ es la pentatónica mayor: Do Re Mi Sol La (Do).\n\n    0 0 2 2 4 4 7 7 7 9 9 12\n\n  La escala __Hexafónica__ es la escala de tonos enteros: Do Re Mi Fa# Sol# La#.\n\n    0 0 2 2 4 4 6 6 8 8 10 10\n\n  La escala __Heptafónica__ es el modo jónico en Do, la escala diatónica en Do, o Do Mayor: Do Re Mi Fa Sol La Si.\n\n    0 0 2 2 4 5 5 7 7 9 9 11\n\n## ¿Qué formatos se pueden subir?\n\n  Solamente se puede aplicar el algoritmo a los _Archivos Musescore sin Comprimir_ (&ast;.mscx). Los _Archivos Musescore_ (&ast;.mscz) están comprimidos, por lo que no se pueden editar directamente. La manera de descomprimirlos es mediante su propio software.\n\n  No son aceptados otros formatos de otros programas de notación musical, porque no deseo apoyar software restrictivo. Aquel que desee exportar a otros formatos deberá hacerlo mediante _Musescore_.\n\n## ¿Para qué modificar las notas de una partitura?\n\n  En el comienzo de mi trabajo sobre dodecafonismo decidí experimentar con la idea del serialismo, despojándolo de la disonancia pero manteniendo la estructura matemática de las series y sus transformaciones.\n\n  Ya que la disonancia suele provenir del cromatismo, se me ocurrió serializar con otras escalas que no fueran cromáticas, o que tuvieran un menor número de intervalos de semitono. La pentafónica, la hexafónica y la heptafónica fueron mis tres intentos.\n\n  Tenía dos opciones: o componer una nueva obra _enefonista_ por mi cuenta, o modificar una obra dodecafónica con una estructura ya ideada por otro compositor. Lo segundo resultaba más sencillo, pero la primera vez tuve que modificar a mano la partitura, nota a nota.\n\n  Esta herramienta evita ese trabajo tedioso y mecánico, pero también sirve para otros propósitos. Por ejemplo, sirve para cambiar una partitura de mayor a menor, o viceversa.\n\n';
+var author$project$Styles$back = '#F9F9FF';
 var elm$json$Json$Decode$map = _Json_map1;
 var elm$json$Json$Decode$map2 = _Json_map2;
 var elm$json$Json$Decode$succeed = _Json_succeed;
@@ -5733,6 +5733,69 @@ var author$project$Styles$textStyle = function (tam) {
 			A2(elm$html$Html$Attributes$style, 'font-size', tam)
 		]);
 };
+var elm$html$Html$a = _VirtualDom_node('a');
+var elm$html$Html$div = _VirtualDom_node('div');
+var elm$html$Html$span = _VirtualDom_node('span');
+var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
+var elm$json$Json$Encode$string = _Json_wrap;
+var elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			elm$json$Json$Encode$string(string));
+	});
+var elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var author$project$Credits$credits = A2(
+	elm$html$Html$div,
+	_Utils_ap(
+		_List_fromArray(
+			[
+				A2(elm$html$Html$Attributes$style, 'margin-top', '100px'),
+				A2(elm$html$Html$Attributes$style, 'right', '0px'),
+				A2(elm$html$Html$Attributes$style, 'bottom', '0px'),
+				A2(elm$html$Html$Attributes$style, 'position', 'fixed'),
+				A2(elm$html$Html$Attributes$style, 'background-color', author$project$Styles$back)
+			]),
+		author$project$Styles$textStyle('0.75em')),
+	_List_fromArray(
+		[
+			A2(
+			elm$html$Html$span,
+			_List_Nil,
+			_List_fromArray(
+				[
+					elm$html$Html$text('Celia Rubio Madrigal')
+				])),
+			A2(
+			elm$html$Html$span,
+			_List_fromArray(
+				[
+					A2(elm$html$Html$Attributes$style, 'margin-left', '50px')
+				]),
+			_List_fromArray(
+				[
+					elm$html$Html$text('Email: ')
+				])),
+			A2(
+			elm$html$Html$a,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$href('mailto:celrubio@ucm.es'),
+					A2(elm$html$Html$Attributes$style, 'margin-right', '20px')
+				]),
+			_List_fromArray(
+				[
+					elm$html$Html$text('celrubio@ucm.es')
+				]))
+		]));
+var author$project$Info$texto = '\n\n# Más información:\n\n## Instrucciones.\n\n  1. Antes de subir cualquier partitura, ésta se debe abrir en el programa _Musescore_ y guardar como _Archivo Musescore sin Comprimir_ (&ast;.mscx), que no es la opción predeterminada, sino la segunda.\n\n  2. Después, se podrá hacer click en el botón __Examinar__ para buscar las partituras, o bien arrastrarlas y soltarlas en el recuadro rayado. Se pueden modificar varias partituras a la vez. Una vez subidas, se pueden descargar tantas modificaciones de ellas como se quiera.\n\n  3. Se escoge entonces la escala deseada mediante los selectores y/o los cuadros de texto, además del nombre de la escala, si procede.\n\n  4. Por último, se descargan los nuevos archivos mediante el botón __Descargar__, con el nombre original de cada partitura concatenado al nombre de la escala.\n\n## ¿Cómo se modifican las partituras?\n\n  La altura de cada nota se modifica independientemente según la escala escogida. Se puede escoger una escala predefinida o definir una propia. El primer recuadro indica a qué nota se envía cada Do de la partitura; el segundo, adónde se envía cada Do#; el tercero para el Re, etc.\n\n  Por ejemplo, la escala cromática `0 1 2 3 4 5 6 7 8 9 10 11` manda cada nota 0 (Do) al 0, cada nota 1 (Do#) al 1, y así sucesivamente; es decir, es la función identidad. En cambio, la escala `0 0 0 0 0 0 0 0 0 0 0 0` envía cada nota al Do más cercano a ella inferiormente.\n\n  Se pueden usar todo tipo de números enteros: positivos o negativos, y de cualquier tamaño. La escala `12 13 14 15 16 17 18 19 20 21 22 23` enviaría cada nota a su octava superior; la escala `-12 -11 -10 -9 -8 -7 -6 -5 -4 -3 -2 -1` enviaría cada nota a su octava inferior.\n\n  Al definir una escala hay que tener en cuenta que no solo se escogen las notas que aparecerán en ella, sino también cuántas veces estarán éstas repetidas y de qué manera se distribuyen por la partitura. Aquí la definición de _escala_ no es la usual. Es, más bien, una función transformativa definida directamente para todas sus entradas.\n\n## ¿Por qué este convenio? ¿Por qué no el natural?\n\n  El convenio más natural para modificar cada nota sería indicar cuántos semitonos se le quiere sumar o restar. Las series de números no serían entonces escalas, sino instrucciones individuales.\n\n  Aunque cada nota se sigue modificando individualmente, el sentido de la modificación debe ser siempre global. Algo como `0 -1 0 -1 0 -1 -1 0 -1 0 -1 +1` no da apenas información sobre lo que se está modificando. De hecho, un mero intercambio entre dos números haría que la escala resultante fuese totalmente distinta, con otra sonoridad. Sería un gran cambio en la nueva pieza sin ser un gran cambio en la serie de números.\n\n  En cambio, aporta más perspectiva y significado ver las modificaciones como parte de un todo, con visión de conjunto. Por un lado, se aprecia cuántas veces aparece cada nota y de cuántas notas estará compuesta la partitura. Por otro, se ve más fácilmente si una escala es conocida o no lo es. La serie de notas anterior formaba la escala pentafónica, pero no se podía averiguar a simple vista sin calcular el otro formato.\n\n## ¿Cuáles son las escalas predefinidas?\n\n  La escala __Pentafónica__ es la pentatónica mayor: Do Re Mi Sol La (Do).\n\n    0 0 2 2 4 4 7 7 7 9 9 12\n\n  La escala __Hexafónica__ es la escala de tonos enteros: Do Re Mi Fa# Sol# La#.\n\n    0 0 2 2 4 4 6 6 8 8 10 10\n\n  La escala __Heptafónica__ es el modo jónico en Do, la escala diatónica en Do, o Do Mayor: Do Re Mi Fa Sol La Si.\n\n    0 0 2 2 4 5 5 7 7 9 9 11\n\n## ¿Qué formatos se pueden subir?\n\n  Solamente se puede aplicar el algoritmo a los _Archivos Musescore sin Comprimir_ (&ast;.mscx). Los _Archivos Musescore_ (&ast;.mscz) están comprimidos, por lo que no se pueden editar directamente. La manera de descomprimirlos es mediante su propio software.\n\n  No son aceptados otros formatos de otros programas de notación musical, porque no deseo apoyar software restrictivo. Aquel que desee exportar a otros formatos deberá hacerlo mediante _Musescore_.\n\n## ¿Para qué modificar las notas de una partitura?\n\n  En el comienzo de mi trabajo sobre dodecafonismo decidí experimentar con la idea del serialismo, despojándolo de la disonancia pero manteniendo la estructura matemática de las series y sus transformaciones.\n\n  Ya que la disonancia suele provenir del cromatismo, se me ocurrió serializar con otras escalas que no fueran cromáticas, o que tuvieran un menor número de intervalos de semitono. La pentafónica, la hexafónica y la heptafónica fueron mis tres intentos.\n\n  Tenía dos opciones: o componer una nueva obra _enefonista_ por mi cuenta, o modificar una obra dodecafónica con una estructura ya ideada por otro compositor. Lo segundo resultaba más sencillo, pero la primera vez tuve que modificar a mano la partitura, nota a nota.\n\n  Esta herramienta evita ese trabajo tedioso y mecánico, pero también sirve para otros propósitos. Por ejemplo, sirve para cambiar una partitura de mayor a menor, o viceversa.\n\n';
 var elm_explorations$markdown$Markdown$defaultOptions = {
 	defaultHighlighting: elm$core$Maybe$Nothing,
 	githubFlavored: elm$core$Maybe$Just(
@@ -5761,7 +5824,6 @@ var author$project$Info$informacion = A2(
 				A2(elm$html$Html$Attributes$style, 'margin-right', 'auto')
 			])),
 	author$project$Info$texto);
-var author$project$Styles$back = '#F9F9FF';
 var author$project$Styles$generalStyle = _List_fromArray(
 	[
 		A2(elm$html$Html$Attributes$style, 'text-align', 'center'),
@@ -5770,20 +5832,6 @@ var author$project$Styles$generalStyle = _List_fromArray(
 	]);
 var author$project$Styles$bold = '#BBBBFF';
 var author$project$Styles$suave = '#EEEEFF';
-var elm$json$Json$Encode$string = _Json_wrap;
-var elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			elm$json$Json$Encode$string(string));
-	});
-var elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
 var author$project$Styles$aStyle = F2(
 	function (_this, ref) {
 		return _Utils_ap(
@@ -5806,12 +5854,8 @@ var author$project$Styles$aStyle = F2(
 				]),
 			author$project$Styles$textStyle('1.25em'));
 	});
-var elm$html$Html$a = _VirtualDom_node('a');
 var elm$html$Html$br = _VirtualDom_node('br');
-var elm$html$Html$div = _VirtualDom_node('div');
 var elm$html$Html$nav = _VirtualDom_node('nav');
-var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
 var author$project$Styles$navbar = function (_this) {
 	return A2(
 		elm$html$Html$div,
@@ -5995,7 +6039,6 @@ var author$project$View$hijackOn = F2(
 			event,
 			A2(elm$json$Json$Decode$map, author$project$View$hijack, decoder));
 	});
-var elm$html$Html$span = _VirtualDom_node('span');
 var author$project$View$dragNdrop = function (model) {
 	return A2(
 		elm$html$Html$div,
@@ -6355,69 +6398,11 @@ var elm$html$Html$Attributes$checked = elm$html$Html$Attributes$boolProperty('ch
 var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
 var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
 var author$project$View$opciones = function (bloqueado) {
-	return A3(
-		author$project$Styles$doblecolumna,
-		'100',
+	return A2(
+		elm$html$Html$div,
+		_List_Nil,
 		_List_fromArray(
 			[
-				A2(
-				elm$html$Html$label,
-				author$project$Styles$textStyle('20px'),
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$input,
-						_List_fromArray(
-							[
-								elm$html$Html$Attributes$type_('radio'),
-								elm$html$Html$Attributes$name('Escala'),
-								elm$html$Html$Events$onClick(
-								author$project$Types$Preescalar('Pentafónica')(0)(0)(2)(2)(4)(4)(7)(7)(7)(9)(9)(12))
-							]),
-						_List_Nil),
-						elm$html$Html$text(' Pentafónica')
-					])),
-				A2(elm$html$Html$br, _List_Nil, _List_Nil),
-				A2(elm$html$Html$br, _List_Nil, _List_Nil),
-				A2(
-				elm$html$Html$label,
-				author$project$Styles$textStyle('20px'),
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$input,
-						_List_fromArray(
-							[
-								elm$html$Html$Attributes$type_('radio'),
-								elm$html$Html$Attributes$name('Escala'),
-								elm$html$Html$Events$onClick(
-								author$project$Types$Preescalar('Hexafónica')(0)(0)(2)(2)(4)(4)(6)(6)(8)(8)(10)(10))
-							]),
-						_List_Nil),
-						elm$html$Html$text(' Hexafónica')
-					]))
-			]),
-		_List_fromArray(
-			[
-				A2(
-				elm$html$Html$label,
-				author$project$Styles$textStyle('20px'),
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$input,
-						_List_fromArray(
-							[
-								elm$html$Html$Attributes$type_('radio'),
-								elm$html$Html$Attributes$name('Escala'),
-								elm$html$Html$Events$onClick(
-								author$project$Types$Preescalar('Heptafónica')(0)(0)(2)(2)(4)(5)(5)(7)(7)(9)(9)(11))
-							]),
-						_List_Nil),
-						elm$html$Html$text(' Heptafónica')
-					])),
-				A2(elm$html$Html$br, _List_Nil, _List_Nil),
-				A2(elm$html$Html$br, _List_Nil, _List_Nil),
 				A2(
 				elm$html$Html$label,
 				author$project$Styles$textStyle('20px'),
@@ -6445,7 +6430,88 @@ var author$project$View$opciones = function (bloqueado) {
 							elm$html$Html$Events$onInput(author$project$Types$CambiarNombreEscala),
 							elm$html$Html$Attributes$readonly(bloqueado)
 						])),
-				_List_Nil)
+				_List_Nil),
+				A3(
+				author$project$Styles$doblecolumna,
+				'100',
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$label,
+						author$project$Styles$textStyle('20px'),
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$input,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$type_('radio'),
+										elm$html$Html$Attributes$name('Escala'),
+										elm$html$Html$Events$onClick(
+										author$project$Types$Preescalar('5')(0)(0)(2)(2)(4)(4)(7)(7)(7)(9)(9)(12))
+									]),
+								_List_Nil),
+								elm$html$Html$text(' 5')
+							])),
+						A2(elm$html$Html$br, _List_Nil, _List_Nil),
+						A2(elm$html$Html$br, _List_Nil, _List_Nil),
+						A2(
+						elm$html$Html$label,
+						author$project$Styles$textStyle('20px'),
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$input,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$type_('radio'),
+										elm$html$Html$Attributes$name('Escala'),
+										elm$html$Html$Events$onClick(
+										author$project$Types$Preescalar('6')(0)(0)(2)(2)(4)(4)(6)(6)(8)(8)(10)(10))
+									]),
+								_List_Nil),
+								elm$html$Html$text(' 6')
+							]))
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$label,
+						author$project$Styles$textStyle('20px'),
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$input,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$type_('radio'),
+										elm$html$Html$Attributes$name('Escala'),
+										elm$html$Html$Events$onClick(
+										author$project$Types$Preescalar('7')(0)(0)(2)(2)(4)(5)(5)(7)(7)(9)(9)(11))
+									]),
+								_List_Nil),
+								elm$html$Html$text(' 7')
+							])),
+						A2(elm$html$Html$br, _List_Nil, _List_Nil),
+						A2(elm$html$Html$br, _List_Nil, _List_Nil),
+						A2(
+						elm$html$Html$label,
+						author$project$Styles$textStyle('20px'),
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$input,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$type_('radio'),
+										elm$html$Html$Attributes$name('Escala'),
+										elm$html$Html$Events$onClick(
+										author$project$Types$Preescalar('8')(0)(0)(2)(3)(3)(5)(6)(6)(8)(9)(9)(11))
+									]),
+								_List_Nil),
+								elm$html$Html$text(' 8')
+							]))
+					]))
 			]));
 };
 var elm$browser$Browser$Document = F2(
@@ -6469,7 +6535,9 @@ var author$project$View$view = function (model) {
 						author$project$View$opciones(model.bloqueado),
 						author$project$View$entradaIndiv(model.bloqueado),
 						author$project$View$descargar,
-						author$project$Info$informacion
+						author$project$Info$informacion,
+						A2(elm$html$Html$br, _List_Nil, _List_Nil),
+						author$project$Credits$credits
 					]))
 			]));
 };
