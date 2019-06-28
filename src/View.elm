@@ -8,6 +8,7 @@ import Info exposing (informacion)
 import Json.Decode as D
 import Styles exposing (..)
 import Types exposing (..)
+import Credits exposing (..)
 import File exposing (File)
 
 
@@ -53,16 +54,35 @@ hijack msg =
 
 opciones : Bool -> Html Msg
 opciones bloqueado =
-    doblecolumna "100"
+  div []
+  [ label
+      ( textStyle "20px" )
+      [ input
+          [ type_ "radio"
+          , name "Escala"
+          , checked (not bloqueado)
+          , onClick VolverAEscalaAnterior
+          ]
+          []
+      , text " "
+      ]
+  , input
+      ( squarefieldStyle "150px"
+      ++ [ placeholder "Cromática"
+      , onInput CambiarNombreEscala
+      , readonly bloqueado
+      ])
+      []
+  , doblecolumna "100"
         [ label
             ( textStyle "20px" )
             [ input
                 [ type_ "radio"
                 , name "Escala"
-                , onClick (Preescalar "Pentafónica" 0 0 2 2 4 4 7 7 7 9 9 12)
+                , onClick (Preescalar "5" 0 0 2 2 4 4 7 7 7 9 9 12)
                 ]
                 []
-            , text " Pentafónica"
+            , text " 5"
             ]
         , br [] []
         , br [] []
@@ -71,10 +91,10 @@ opciones bloqueado =
             [ input
                 [ type_ "radio"
                 , name "Escala"
-                , onClick (Preescalar "Hexafónica" 0 0 2 2 4 4 6 6 8 8 10 10)
+                , onClick (Preescalar "6" 0 0 2 2 4 4 6 6 8 8 10 10)
                 ]
                 []
-            , text " Hexafónica"
+            , text " 6"
             ]
         ]
         [ label
@@ -82,10 +102,10 @@ opciones bloqueado =
             [ input
                 [ type_ "radio"
                 , name "Escala"
-                , onClick (Preescalar "Heptafónica" 0 0 2 2 4 5 5 7 7 9 9 11)
+                , onClick (Preescalar "7" 0 0 2 2 4 5 5 7 7 9 9 11)
                 ]
                 []
-            , text " Heptafónica"
+            , text " 7"
             ]
         , br [] []
         , br [] []
@@ -94,21 +114,13 @@ opciones bloqueado =
             [ input
                 [ type_ "radio"
                 , name "Escala"
-                , checked (not bloqueado)
-                , onClick VolverAEscalaAnterior
+                , onClick (Preescalar "8" 0 0 2 3 3 5 6 6 8 9 9 11)
                 ]
                 []
-            , text " "
+            , text " 8"
             ]
-        , input
-            ( squarefieldStyle "150px"
-            ++ [ placeholder "Cromática"
-            , onInput CambiarNombreEscala
-            , readonly bloqueado
-            ])
-            []
         ]
-
+      ]
 
 entradaIndiv : Bool -> Html Msg
 entradaIndiv bloqueado =
@@ -201,6 +213,8 @@ view model =
         , entradaIndiv model.bloqueado
         , descargar
         , informacion
+        , br [] []
+        , credits
         ]
     ]
   )
